@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TournamentDay } from '@/mock-data'
+import type { TournamentDay } from '@/types'
 import { useDaysStore } from '@/stores/days'
 
 type TournamentDayProps = {

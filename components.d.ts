@@ -24,7 +24,6 @@ declare module 'vue' {
     NavMenu: typeof import('./src/components/NavMenu/NavMenu.vue')['default']
     ScheduleButton: typeof import('./src/components/ScheduleButton/ScheduleButton.vue')['default']
     TeamGroup: typeof import('./src/components/TeamGroup/TeamGroup.vue')['default']
-    TeamGroupsTeam: typeof import('./src/components/TeamGroup/TeamGroupsTeam.vue')['default']
     TeamGroupTeam: typeof import('./src/components/TeamGroup/TeamGroupTeam.vue')['default']
     TeamIcon: typeof import('./src/components/TeamIcon/TeamIcon.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']

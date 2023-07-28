@@ -1,9 +1,9 @@
 import teamData from '@/team-data.json'
 import { supabase } from '@/api'
-import type { TournamentDay } from '@/types'
+import type { Team, Tournament, TournamentDay } from '@/types'
 import { useQuery } from '@tanstack/vue-query'
 
-async function getTournamentData() {
+async function getTournamentData(): Promise<Tournament> {
   const { data, error } = await supabase
     .from('days')
     .select<string, TournamentDay[]>(`
@@ -26,6 +26,7 @@ async function getTournamentData() {
   return {
     days: data?.reduce((a, b) => a.concat(b), []).map(day => {
       return {
+        ...day,
         date: new Date(`${day.date}T12:00:00+00:00`),
         matches: day.matches.map(match => {
           if (match.teams?.length) {
@@ -37,7 +38,7 @@ async function getTournamentData() {
                   ...team,
                   ...teamData[team.id],
                 }
-              })
+              }) as Team[]
             }
           }
           return {

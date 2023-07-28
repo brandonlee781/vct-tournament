@@ -18,6 +18,11 @@ export type TeamId = 'bilibili' | 'drx' | 'edward_gaming' | 'evil_geniuses' | 'f
 
 export type Team = {
   id: TeamId
+  name: string;
+  league: 'EMEA' | 'Americas' | 'Pacific'
+  region: string
+  color: { primary: string; secondary: string; background?: string }
+  icon?: { height?: string; width?: string }
 }
 
 export type TeamData = {

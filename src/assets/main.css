@@ -10,13 +10,13 @@
 
 @font-face {
   font-family: 'Gridnik';
-  src: local('Foundry Gridnik W03 Bold'), url('@/assets/fonts/Foundry\ Gridnik\ W03\ Bold.woff2') format('woff2');
+  src: local('Foundry Gridnik W03 Bold'), url('@/assets/fonts/Foundry Gridnik W03 Bold.woff2') format('woff2');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'Gridnik';
-  src: local('Foundry Gridnik W03 ExtraBold'), url('@/assets/fonts/Foundry\ Gridnik\ W03\ ExtraBold.woff2') format('woff2');
+  src: local('Foundry Gridnik W03 ExtraBold'), url('@/assets/fonts/Foundry Gridnik W03 ExtraBold.woff2') format('woff2');
   font-weight: 800;
 }
 
