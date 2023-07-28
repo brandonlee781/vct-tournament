@@ -1,0 +1,45 @@
+<svg
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 213.8 188"
+   xml:space="preserve"
+   version="1.1">
+   <g id="layer1" transform="translate(-0.2,-36.2)">
+    <polygon
+      class="primary"
+      points="114.8,135.5 103.6,139.6 103.6,160.3 127.7,151.8 134.1,160 163,149.8 114.3,88.2 103.6,92 103.6,121.5 "
+      id="letter-a"
+    />
+    <polygon
+      class="primary"
+      points="96.3,173.4 49.4,114.3 49.4,160.6 67.6,183.6 "
+      id="letter-n-mid"
+    />
+    <polygon
+      class="primary"
+      points="136.7,108.4 165.2,144.5 165.2,70.2 136.7,80.3 "
+      id="letter-v"
+    />
+    <polygon
+      class="primary"
+      points="70.1,131.9 98.6,168.1 98.6,93.8 70.1,103.9 "
+      id="letter-n-right"
+    />
+    <polygon
+      class="primary"
+      points="170.2,147.3 198.7,137.2 198.7,58.4 170.2,68.5 "
+      id="letter-i"
+    />
+    <polygon
+      class="primary"
+      points="44.4,191.8 44.4,113 15.6,123.3 15.6,202.1 "
+      id="letter-n-left"
+    />
+    <path
+      class="primary"
+      d="M 0.2,224.2 V 111.9 L 214,36.2 V 148.5 Z M 5,115.2 V 217.5 L 209.3,145.1 V 42.8 Z"
+      id="outline"
+    />
+  </g>
+</svg>

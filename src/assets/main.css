@@ -1,0 +1,48 @@
+
+
+@import './base.css';
+
+@font-face {
+  font-family: 'Gridnik';
+  src: local('Gridnick'), url('@/assets/fonts/Gridnik.woff2') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Gridnik';
+  src: local('Foundry Gridnik W03 Bold'), url('@/assets/fonts/Foundry\ Gridnik\ W03\ Bold.woff2') format('woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Gridnik';
+  src: local('Foundry Gridnik W03 ExtraBold'), url('@/assets/fonts/Foundry\ Gridnik\ W03\ ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+}
+
+#app {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0;
+  height: 100vh;
+
+  font-weight: normal;
+  font-family: "Gridnik", sans-serf;
+}
+
+a,
+.green {
+  text-decoration: none;
+  /* color: hsla(160, 100%, 37%, 1); */
+  transition: 0.4s;
+}
+
+@media (min-width: 1024px) {
+  body {
+    overflow: hidden;
+  }
+
+  #app {
+    padding: 0 2rem;
+  }
+}
