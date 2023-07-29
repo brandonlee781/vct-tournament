@@ -7,6 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import svgLoader from 'vite-svg-loader'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -41,6 +42,49 @@ export default defineConfig({
       ],
       dirs: ['src/composables/**', 'src/**/composables/**', 'src/generated'],
       eslintrc: {
+        enabled: true,
+      },
+    }),
+    VitePWA({
+      registerType: 'autoUpdate',
+      base: '/vct-tournament/',
+      strategies: 'generateSW',
+      manifest: {
+        name: 'VCT Champions Schedule',
+        short_name: 'VCT Champions',
+        description: 'Schedule VCT Champions Los Angeles',
+        theme_color: '#1f2937',
+        start_url: '.',
+        display: 'standalone',
+        background_color: '#a22425',
+        icons: [
+          {
+            "src": "manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+          },
+          {
+            "src": "manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+          }
+        ],
+      },
+      devOptions: {
         enabled: true,
       },
     }),

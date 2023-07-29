@@ -74,6 +74,7 @@ onClickOutside(mobileMenu, () => {
     <button v-if="groupTab === 'groups'" @click="groupTab = 'qualified'" class="mt-2 px-3 py-2 hover:bg-[#161616]/40">
       Show Qualified Teams
     </button>
+    <ReloadPrompt />
   </main>
 </template>
 

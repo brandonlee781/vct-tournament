@@ -22,6 +22,7 @@ declare module 'vue' {
     IMdiTwitter: typeof import('~icons/mdi/twitter')['default']
     IMdiYoutube: typeof import('~icons/mdi/youtube')['default']
     NavMenu: typeof import('./src/components/NavMenu/NavMenu.vue')['default']
+    ReloadPrompt: typeof import('./src/components/ReloadPrompt.vue')['default']
     ScheduleButton: typeof import('./src/components/ScheduleButton/ScheduleButton.vue')['default']
     TeamGroup: typeof import('./src/components/TeamGroup/TeamGroup.vue')['default']
     TeamGroupTeam: typeof import('./src/components/TeamGroup/TeamGroupTeam.vue')['default']
