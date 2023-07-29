@@ -8,7 +8,6 @@ const groupTab = ref<'qualified' | 'groups'>('groups')
 const daysContainer = ref<HTMLDivElement>()
 const scrollSideways = (evt: WheelEvent) => {
   if (daysContainer.value) {
-    console.log(daysContainer.value.clientWidth)
     daysContainer.value.scrollLeft += evt.deltaY * 3
   }
 }
