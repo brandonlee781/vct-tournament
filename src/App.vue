@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import VCTLogo from '@/assets/logos/vct.svg'
 import { useDaysStore } from './stores/days';
 const daysStore = useDaysStore()
 const { tournament } = useTournamentData()
@@ -21,12 +22,15 @@ onClickOutside(mobileMenu, () => {
 </script>
 
 <template>
-  <header class="relative flex flex-nowrap items-center justify-end py-2 gap-2">
-    <button class="block sm:hidden p-3 hover:bg-slate-200/30 rounded-full" @click="menuOpen = true">
-      <i-mdi-menu />
-    </button>
-    <NavMenu class="hidden sm:flex" />
-    <NavMenu ref="mobileMenu" v-show="menuOpen" class="sm:hidden absolute bg-[#161616] top-0 right-0 p-2" />
+  <header class="relative flex flex-nowrap items-center justify-between p-2 gap-2">
+    <VCTLogo fill="#c5b173" height="36px" width="36px" />
+    <div>
+      <button class="block sm:hidden p-3 hover:bg-slate-200/30 rounded-full" @click="menuOpen = true">
+        <i-mdi-menu />
+      </button>
+      <NavMenu class="hidden sm:flex" />
+      <NavMenu ref="mobileMenu" v-show="menuOpen" class="sm:hidden absolute bg-[#161616] top-0 right-0 p-2" />
+    </div>
   </header>
   <main class="md:mt-8">
     <div class="font-extrabold text-center text-2xl md:text-3xl lg:text-5xl text-[#c5b173] pb-6">
