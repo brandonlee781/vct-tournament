@@ -4,6 +4,8 @@ export type Tournament = {
 export type TournamentDay = {
   id: string
   date: Date
+  special: boolean
+  specialColor?: string
   matches: TournamentMatch[]
 }
 export type TournamentMatch = {
@@ -14,24 +16,17 @@ export type TournamentMatch = {
   placeholders?: Placeholder[]
 }
 
-export type TeamId = 'bilibili' | 'drx' | 'edward_gaming' | 'evil_geniuses' | 'fnatic' | 'fpx' | 'fut' | 'giants' | 'kru' | 'loud' | 'navi' | 'nrg' | 'paper_rex' | 't1' | 'team_liquid' | 'zeta_division'
-
-export type Team = {
-  id: TeamId
-  name: string;
-  league: 'EMEA' | 'Americas' | 'Pacific'
-  region: string
-  color: { primary: string; secondary: string; background?: string }
-  icon?: { height?: string; width?: string }
-}
+export type TeamId = '100_thieves' | 'bilibili' | 'cloud9' | 'drx' | 'edward_gaming' | 'evil_geniuses' | 'fnatic' | 'fpx' | 'fut' | 'giants' | 'kru' | 'loud' | 'navi' | 'nrg' | 'paper_rex' | 'sentinels' | 't1' | 'team_liquid' | 'zeta_division'
 
 export type TeamData = {
   name: string;
-  league: 'EMEA' | 'Americas' | 'Pacific'
+  league: 'EMEA' | 'Americas' | 'Pacific' | 'China'
   region: string
-  color: { primary: string; secondary: string; background?: string }
+  color: { primary: string; secondary?: string; background?: string }
   icon?: { height?: string; width?: string }
 }
+
+export type Team = TeamData & { id: TeamId }
 
 export type Placeholder = {
   loser?: boolean

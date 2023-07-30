@@ -1,6 +1,14 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "auto-imports.d.ts", "components.d.ts", "lib.es5.d.ts", "src/team-data.json"],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "auto-imports.d.ts",
+    "components.d.ts",
+    "lib.es5.d.ts",
+    "src/team-data.ts"
+  ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
@@ -11,6 +19,6 @@
     },
     "types": [
       "unplugin-icons/types/vue",
-    ]
+    ],
   },
 }

@@ -1,14 +1,35 @@
-import teamData from '@/team-data.json'
+import teamData from '@/team-data'
 import { supabase } from '@/api'
-import type { Team, Tournament, TournamentDay } from '@/types'
+import type { Placeholder, Team, TeamId, Tournament, TournamentMatch } from '@/types'
 import { useQuery } from '@tanstack/vue-query'
+
+type DbTournamentDay = {
+  id: string
+  date: string
+  special: boolean
+  special_color?: string
+  matches: {
+    id: string;
+    time: string;
+    subtitle?: string
+    teams?: { id: TeamId }[]
+    placeholders?: Placeholder[]
+  }[]
+}
+
+const getTeamData = ({id }: { id: TeamId }): Team => ({
+  id,
+  ...teamData[id],
+})
 
 async function getTournamentData(): Promise<Tournament> {
   const { data, error } = await supabase
     .from('days')
-    .select<string, TournamentDay[]>(`
+    .select<string, DbTournamentDay[]>(`
       id,
       date,
+      special,
+      special_color,
       matches:matches(
         id,
         time,
@@ -27,23 +48,15 @@ async function getTournamentData(): Promise<Tournament> {
     days: data?.reduce((a, b) => a.concat(b), []).map(day => {
       return {
         ...day,
+        specialColor: day.special_color,
         date: new Date(`${day.date}T12:00:00+00:00`),
         matches: day.matches.map(match => {
-          if (match.teams?.length) {
-            return {
-              ...match,
-              time: new Date(match.time),
-              teams: match.teams.map(team => {
-                return {
-                  ...team,
-                  ...teamData[team.id],
-                }
-              }) as Team[]
-            }
-          }
           return {
-            ...match,
-            time: new Date(match.time)
+            id: match.id,
+            subtitle: match.subtitle ?? '',
+            time: new Date(match.time),
+            teams: match.teams?.map(t => getTeamData(t)) ?? [],
+            placeholders: match.placeholders ?? [],
           }
         }).sort((a, b) => {
           return a.time.getTime() - b.time.getTime()
