@@ -32,8 +32,10 @@ const teamStyle = computed(() => {
 
 <template>
   <div>
-    <div class="h-6 bg-[#c5b173] text-black text-center font-extrabold leading-6 uppercase">
-      {{ name }}
+    <div class="h-6 bg-[#c5b173] flex items-center justify-center">
+      <span class="text-black text-center font-extrabold leading-3 uppercase">
+        {{ name }}
+      </span>
     </div>
     <div :class="wrapperClass" :style="{ gridTemplateColumns: `repeat(${cols}, 1fr)` }">
         <TeamGroupTeam
