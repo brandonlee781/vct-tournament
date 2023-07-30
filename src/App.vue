@@ -59,7 +59,7 @@ const times = [
         @click:top="() => daysStore.goToPrevious()"
         @click:bottom="() => daysStore.goToFirst()"
       />
-      <div ref="daysContainer" class="flex flex-row flex-nowrap gap-4 overflow-x-scroll scroll-smooth snap-mandatory snap-y days-container" @wheel.prevent="scrollSideways">
+      <div ref="daysContainer" class="flex flex-row flex-nowrap gap-4 overflow-x-scroll overflow-y-hidden scroll-smooth snap-mandatory snap-y days-container" @wheel.prevent="scrollSideways">
         <TournamentDay v-for="(day, index) in tournament.days" :key="index" :day="day" :index="index" class="snap-end snap-always" />
       </div>
 
