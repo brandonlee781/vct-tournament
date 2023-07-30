@@ -48,7 +48,8 @@
     "region": "NA",
     "color": {
       "primary": "#000429",
-      "secondary": "#35dd8e"
+      "secondary": "#35dd8e",
+      "background": "white"
     }
   },
   "fnatic": {
