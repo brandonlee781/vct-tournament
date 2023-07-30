@@ -10,9 +10,6 @@ const matchTime = computed(() => {
   if (!match.value.time) return null
   return format(match.value.time, 'hh:mm aa')
 })
-
-const dayOfWeek = computed(() => format(props.date, 'EEEE'))
-const formattedDate = computed(() => format(props.date, 'MMM d'))
 </script>
 
 <template>
