@@ -99,9 +99,10 @@ const times = computed(() => {
 .days-container {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
-  margin-bottom: -50px;
+  /* margin-bottom: -50px; */
 }
 .days-container::-webkit-scrollbar {
+  display: none;
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
