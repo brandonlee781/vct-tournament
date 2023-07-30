@@ -1,19 +1,5 @@
 <script setup lang="ts">
-import { format, addDays } from 'date-fns';
-let first = new Date()
-first.setUTCHours(19)
-first.setUTCMinutes(0)
-let second = new Date()
-second.setUTCHours(22)
-second.setUTCMinutes(0)
-let third = addDays(new Date(), 1)
-third.setUTCHours(1)
-third.setUTCMinutes(0)
-const times = [
-  format(first, 'HH:mm'),
-  format(second, 'HH:mm'),
-  format(third, 'HH:mm')
-]
+defineProps<{ times: string[] }>()
 </script>
 
 <template>

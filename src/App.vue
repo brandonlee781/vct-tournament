@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import VCTLogo from '@/assets/logos/vct.svg'
 import { useDaysStore } from './stores/days';
+import { format, addDays } from 'date-fns';
 const daysStore = useDaysStore()
 const { tournament } = useTournamentData()
 
@@ -19,6 +20,20 @@ onClickOutside(mobileMenu, () => {
     menuOpen.value = false
   }
 })
+let first = new Date()
+first.setUTCHours(19)
+first.setUTCMinutes(0)
+let second = new Date()
+second.setUTCHours(22)
+second.setUTCMinutes(0)
+let third = addDays(new Date(), 1)
+third.setUTCHours(1)
+third.setUTCMinutes(0)
+const times = [
+  format(first, 'HH:mm'),
+  format(second, 'HH:mm'),
+  format(third, 'HH:mm')
+]
 </script>
 
 <template>
@@ -37,7 +52,7 @@ onClickOutside(mobileMenu, () => {
       CHAMPIONS LOS ANGELES SCHEDULE
     </div>
     <div v-if="tournament?.days" class="flex flex-nowrap">
-      <TimeReference />
+      <TimeReference :times="times" />
       <ScheduleButton
         prev
         :disabled="!daysStore.hasPrevious"
