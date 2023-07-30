@@ -124,7 +124,7 @@ const teams: { [key in TeamId]: TeamData } = {
     region: 'NA',
     color: {
       primary: '#dddddd',
-      secondary: '#ec407a'
+      background: '#333'
     },
     icon: {
       height: '48px',

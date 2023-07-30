@@ -1,13 +1,14 @@
 import teamData from '@/team-data'
 import { supabase } from '@/api'
-import type { Placeholder, Team, TeamId, Tournament, TournamentMatch } from '@/types'
+import type { Placeholder, Team, TeamId, Tournament } from '@/types'
 import { useQuery } from '@tanstack/vue-query'
 
 type DbTournamentDay = {
-  id: string
+  id: number
   date: string
   special: boolean
-  special_color?: string
+  special_bg?: string
+  special_dark?: boolean
   matches: {
     id: string;
     time: string;
@@ -29,7 +30,8 @@ async function getTournamentData(): Promise<Tournament> {
       id,
       date,
       special,
-      special_color,
+      special_bg,
+      special_dark,
       matches:matches(
         id,
         time,
@@ -48,7 +50,11 @@ async function getTournamentData(): Promise<Tournament> {
     days: data?.reduce((a, b) => a.concat(b), []).map(day => {
       return {
         ...day,
-        specialColor: day.special_color,
+        specialColor: {
+          bg: day.special_bg,
+          text: day.special_dark ? '#FFF' : '#000',
+          dark: day.special_dark,
+        },
         date: new Date(`${day.date}T12:00:00+00:00`),
         matches: day.matches.map(match => {
           return {

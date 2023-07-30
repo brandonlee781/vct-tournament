@@ -2,10 +2,10 @@ export type Tournament = {
   days: TournamentDay[]
 }
 export type TournamentDay = {
-  id: string
+  id: number
   date: Date
   special: boolean
-  specialColor?: string
+  specialColor?: { bg?: string; text?: string, dark?: boolean }
   matches: TournamentMatch[]
 }
 export type TournamentMatch = {

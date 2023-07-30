@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FunctionalComponent, SVGAttributes } from 'vue'
-import type { TeamId } from '@/types'
+import type { TeamId, TeamData } from '@/types'
 import BiliBiliLogo from '@/assets/logos/bilibili.svg?skipsvgo'
 import DRXLogo from '@/assets/logos/drx.svg?skipsvgo'
 import EdwardLogo from '@/assets/logos/edward_gaming.svg?skipsvgo'
@@ -19,16 +19,12 @@ import TLLogo from '@/assets/logos/team_liquid.svg?skipsvgo'
 import ZetaLogo from '@/assets/logos/zeta_division.svg?skipsvgo'
 import { useTeamsStore } from '@/stores/teams'
 
-type TeamIconProps = {
-  teamId: TeamId
-  color: { primary: string; secondary: string; background?: string }
-  icon?: { height?: string; width?: string }
-}
+type TeamIconProps = { teamId: TeamId, light?: boolean } & TeamData
 const props = defineProps<TeamIconProps>()
 const teamStore = useTeamsStore()
 
 const teamLogo = computed(() => {
-  const teams: { [key in TeamId]: FunctionalComponent<SVGAttributes, {}, any> } = {
+  const teams: { [key in TeamId]?: FunctionalComponent<SVGAttributes, {}, any> } = {
     'bilibili': BiliBiliLogo,
     'drx': DRXLogo,
     'edward_gaming': EdwardLogo,
@@ -54,13 +50,13 @@ const primaryColor = computed(() => {
   if (teamStore.highlightedTeam === props.teamId) {
     return props.color.primary
   }
-  return 'white'
+  return props.light ? '#161616' : 'white'
 })
 const secondaryColor = computed(() => {
   if (teamStore.highlightedTeam === props.teamId) {
     return props.color.secondary
   }
-  return 'white'
+  return props.light ? '#161616' : 'white'
 })
 const backgroundColor = computed(() => {
   if (teamStore.highlightedTeam === props.teamId) {

@@ -3,6 +3,8 @@ import { format } from 'date-fns'
 
 type TournamentDayHeaderProps = {
   index: number;
+  number: number;
+  special: boolean
   date: Date;
 }
 const props = defineProps<TournamentDayHeaderProps>()
@@ -13,11 +15,15 @@ const formattedDate = computed(() => format(props.date, 'MMM d'))
 
 <template>
   <div
-        class="flex flex-col items-center justify-center bg-[#c5b173] h-20 w-60 text-black"
-      >
-        <span class="font-bold leading-4 tracking-tighter uppercase text-[16px]">Day {{ index + 1 }} : {{ dayOfWeek }}</span>
-        <span class="font-bold leading-4 tracking-tighter uppercase text-[16px]">{{ formattedDate }}</span>
-      </div>
+    class="flex items-center justify-center bg-[#c5b173] h-20 text-black"
+    :class="[special ? 'flex-row w-[30rem]' : 'flex-col w-60']"
+  >
+    <span class="font-bold leading-4 tracking-tighter uppercase text-[16px]">Day {{ number }} : {{ dayOfWeek }}</span>
+    <span class="font-bold leading-4 tracking-tighter uppercase text-[16px]">
+      {{ special ? ', ' : '' }}
+      {{ formattedDate }}
+    </span>
+  </div>
 </template>
 
 <style scoped>

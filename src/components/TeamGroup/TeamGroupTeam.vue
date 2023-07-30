@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { TeamId, TeamData } from '@/types'
 import { useTeamsStore } from '@/stores/teams'
-import teams from '@/team-data.json'
+import teams from '@/team-data'
 type TeamGroupsTeamProp = {
   team: TeamId
 }
 const props = defineProps<TeamGroupsTeamProp>()
-const teamData = computed(() => teams[props.team] as TeamData)
+const teamData = computed(() => teams[props.team])
 const teamStore = useTeamsStore()
 
 const hoverDisabled = ref(false)
@@ -44,3 +44,4 @@ const onClick = () => {
 
 <style scoped>
 </style>
+@/team-data
