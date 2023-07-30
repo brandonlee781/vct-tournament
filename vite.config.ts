@@ -59,7 +59,7 @@ export default defineConfig({
         background_color: '#a22425',
         icons: [
           {
-            "src": "manifest-icon-192.maskable.png",
+            "src": "transp-icon-192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any"
@@ -71,7 +71,7 @@ export default defineConfig({
             "purpose": "maskable"
           },
           {
-            "src": "manifest-icon-512.maskable.png",
+            "src": "transp-icon-512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any"
