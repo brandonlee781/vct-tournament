@@ -23,7 +23,7 @@ const getTeamData = ({id }: { id: TeamId }): Team => ({
   ...teamData[id],
 })
 
-async function getTournamentData(): Promise<Tournament> {
+async function getTournamentData(stage: Ref<'groups' | 'brackets'>): Promise<Tournament> {
   const { data, error } = await supabase
     .from('days')
     .select<string, DbTournamentDay[]>(`
@@ -32,6 +32,7 @@ async function getTournamentData(): Promise<Tournament> {
       special,
       special_bg,
       special_dark,
+      stage,
       matches:matches(
         id,
         time,
@@ -40,6 +41,7 @@ async function getTournamentData(): Promise<Tournament> {
         placeholders
       )
     `)
+    .eq('stage', stage.value)
     .order('date', { ascending: true })
 
   if (error) {
@@ -73,8 +75,11 @@ async function getTournamentData(): Promise<Tournament> {
 }
 
 export function useTournamentData() {
-  const { data } = useQuery(['tournament'], getTournamentData)
+  const stage = ref<'groups' | 'brackets'>('groups')
+  const { data } = useQuery(['tournament', stage], () => getTournamentData(stage))
+
   return {
+    stage,
     tournament: data
   }
 }

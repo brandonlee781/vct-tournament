@@ -6,10 +6,14 @@ const props = defineProps<TournamentMatch>()
 const matchTime = computed(() => {
   return format(props.time, 'hh:mm aa')
 })
+
+const winnerLoser = computed(() => {
+  return !!props.placeholders?.some(item => item.winner || item.loser)
+})
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-60 bg-[#161616]">
+  <div class="flex flex-col items-center w-60 h-[104px] bg-[#161616]">
     <span class="font-bold text-white">{{ matchTime }}</span>
     <div v-if="teams?.length" class="grid grid-cols-[1fr,16px,1fr] gap-4 items-center justify-items-center pt-1 pb-3">
       <TeamIcon :team-id="teams[0].id" v-bind="teams[0]"></TeamIcon>
@@ -17,7 +21,7 @@ const matchTime = computed(() => {
       <TeamIcon :team-id="teams[1].id" v-bind="teams[1]"></TeamIcon>
     </div>
 
-    <div v-if="placeholders?.length" class="grid grid-cols-[1fr,16px,1fr] gap-x-2 items-center justify-items-center pb-2">
+    <div v-if="placeholders?.length && winnerLoser" class="grid grid-cols-[1fr,16px,1fr] gap-x-2 items-center justify-items-center pb-2">
       <div class="flex flex-col text-center">
         <span v-if="placeholders[0].winner" class="text-xs font-bold text-white">WINNER OF</span>
         <span v-else-if="placeholders[0].loser" class="text-xs font-bold text-white">LOSER OF</span>
@@ -31,6 +35,12 @@ const matchTime = computed(() => {
         <span v-else-if="placeholders[0].loser" class="text-xs font-bold text-white">LOSER OF</span>
         <span class="col-start-3 row-start-2 text-4xl font-bold text-white">{{ placeholders[1].text }}</span>
       </div>
+    </div>
+    <div v-else-if="placeholders?.length" class="flex flex-col items-center pb-2">
+      <template v-for="(p, index) in placeholders" :key="index">
+        <span class="text-2xl font-bold text-white text-center uppercase">{{ p.text }}</span>
+        <span class="font-bold text-white text-center uppercase">{{ p.subtext }}</span>
+      </template>
     </div>
     <div class="w-full h-4 leading-4 uppercase text-center text-black font-bold bg-[#c5b173]">
       {{ subtitle }}
