@@ -62,7 +62,7 @@ async function getTournamentData(stage: Ref<'groups' | 'brackets'>): Promise<Tou
           dark: day.special_dark,
         },
         date: new Date(`${day.date}T12:00:00+00:00`),
-        endDate: day.end_date ? new Date(`${day.end_date}T12:00:00+00:00`) : null,
+        endDate: day.end_date ? new Date(`${day.end_date}T12:00:00+00:00`) : undefined,
         matches: day.matches.map(match => {
           return {
             id: match.id,
