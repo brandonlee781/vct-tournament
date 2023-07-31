@@ -14,7 +14,7 @@ const matchTime = computed(() => {
 
 <template>
   <div
-    class="wrapper flex flex-col items-center justify-between w-[30rem] h-[224px] py-2"
+    class="wrapper flex flex-col items-center justify-between h-[224px] py-2"
     :style="{ backgroundColor: specialColor?.bg || '#161616', color: specialColor?.text || '#000' }"
   >
       <div></div>
@@ -38,13 +38,20 @@ const matchTime = computed(() => {
       </div>
 
       <span class="font-bold">
-        {{ matchTime }}
+        {{ !special ? matchTime : '' }}
       </span>
   </div>
 </template>
 
 <style scoped>
 .wrapper {
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 0 100%)
+  width: calc(100vw - 64px - 8px);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 87% 100%, 0 100%)
+}
+@media(min-width:960px) {
+  .wrapper {
+    width: 30rem;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 0 100%)
+  }
 }
 </style>
