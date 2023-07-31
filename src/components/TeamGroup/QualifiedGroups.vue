@@ -12,7 +12,7 @@ defineEmits<{ click: [] }>()
     <TeamGroup name="China" :teams="['bilibili', 'edward_gaming', 'fpx']" />
     <TeamGroup name="EMEA LCQ" :teams="['giants']" />
   </div>
-  <button @click="$emit('click')" class="groups px-3 py-2 hover:bg-[#161616]/40">
+  <button @click="$emit('click')" class="groups mt-2 px-3 py-2 hover:bg-[#161616]/40">
     Show Group Stage
   </button>
 </template>

@@ -49,7 +49,7 @@ const times = computed(() => {
       <NavMenu ref="mobileMenu" v-show="menuOpen" class="sm:hidden absolute bg-[#161616] top-0 right-0 p-2" />
     </div>
   </header>
-  <main class="md:mt-8">
+  <main class="md:mt-6">
     <div class="font-extrabold text-center text-2xl md:text-3xl lg:text-5xl text-[#c5b173] pb-6">
       CHAMPIONS LOS ANGELES SCHEDULE
     </div>
