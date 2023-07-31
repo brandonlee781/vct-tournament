@@ -5,7 +5,9 @@ import { useQuery } from '@tanstack/vue-query'
 
 type DbTournamentDay = {
   id: number
+  day: number
   date: string
+  end_date: string
   special: boolean
   special_bg?: string
   special_dark?: boolean
@@ -28,7 +30,9 @@ async function getTournamentData(stage: Ref<'groups' | 'brackets'>): Promise<Tou
     .from('days')
     .select<string, DbTournamentDay[]>(`
       id,
+      day,
       date,
+      end_date,
       special,
       special_bg,
       special_dark,
@@ -58,6 +62,7 @@ async function getTournamentData(stage: Ref<'groups' | 'brackets'>): Promise<Tou
           dark: day.special_dark,
         },
         date: new Date(`${day.date}T12:00:00+00:00`),
+        endDate: day.end_date ? new Date(`${day.end_date}T12:00:00+00:00`) : null,
         matches: day.matches.map(match => {
           return {
             id: match.id,

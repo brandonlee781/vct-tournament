@@ -3,7 +3,9 @@ export type Tournament = {
 }
 export type TournamentDay = {
   id: number
+  day: number
   date: Date
+  endDate?: Date
   special: boolean
   specialColor?: { bg?: string; text?: string, dark?: boolean }
   matches: TournamentMatch[]
