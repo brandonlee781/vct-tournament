@@ -3,7 +3,7 @@ export type Tournament = {
 }
 export type TournamentDay = {
   id: number
-  day: number
+  day: number | null
   date: Date
   endDate?: Date
   special: boolean

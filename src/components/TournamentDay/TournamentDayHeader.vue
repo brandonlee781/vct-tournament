@@ -1,13 +1,8 @@
 <script setup lang="ts">
+import type { TournamentDay } from '@/types';
 import { format } from 'date-fns'
 
-type TournamentDayHeaderProps = {
-  index: number;
-  day: number
-  special: boolean
-  date: Date;
-  endDate?: Date;
-}
+type TournamentDayHeaderProps = Pick<TournamentDay, 'date' | 'day' | 'endDate' | 'special'>
 const props = defineProps<TournamentDayHeaderProps>()
 
 const dayOfWeek = computed(() => format(props.date, 'EEEE'))

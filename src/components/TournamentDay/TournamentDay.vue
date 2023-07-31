@@ -26,7 +26,7 @@ onUnmounted(() => {
 
 <template>
   <div ref="wrapper" class="flex flex-col gap-4" :data-index="index">
-    <TournamentDayHeader :date="day.date" :end-date="day.endDate" :day="day.day" :special="day.special" :index="index" />
+    <TournamentDayHeader :date="day.date" :end-date="day.endDate" :day="day.day" :special="day.special" />
     <template v-for="match in day.matches" :key="match.id" >
       <TournamentMatch v-if="!day.special" v-bind="match" />
       <TournamentMatchSpecial v-else v-bind="day" />

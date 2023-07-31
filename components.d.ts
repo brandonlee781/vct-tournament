@@ -32,7 +32,7 @@ declare module 'vue' {
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     TimeReference: typeof import('./src/components/TimeReference/TimeReference.vue')['default']
     TournamentDay: typeof import('./src/components/TournamentDay/TournamentDay.vue')['default']
-    TournamentDayHeader: typeof import('./src/components/TournamentDayHeader/TournamentDayHeader.vue')['default']
+    TournamentDayHeader: typeof import('./src/components/TournamentDay/TournamentDayHeader.vue')['default']
     TournamentMatch: typeof import('./src/components/TournamentMatch/TournamentMatch.vue')['default']
     TournamentMatchSpecia: typeof import('./src/components/TournamentMatch/TournamentMatchSpecia.vue')['default']
     TournamentMatchSpecial: typeof import('./src/components/TournamentMatch/TournamentMatchSpecial.vue')['default']
