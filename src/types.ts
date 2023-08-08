@@ -14,7 +14,7 @@ export type TournamentMatch = {
   id: string
   time: Date
   subtitle?: string
-  teams?: Team[]
+  teams?: (Team | null)[]
   placeholders?: Placeholder[]
 }
 

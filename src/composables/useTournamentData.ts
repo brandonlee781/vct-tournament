@@ -72,7 +72,7 @@ async function getTournamentData(stage: Ref<'groups' | 'brackets'>): Promise<Tou
             id: match.id,
             subtitle: match.subtitle ?? '',
             time: new Date(match.time),
-            teams: match.teams?.map(t => getTeamData(t)).filter(Boolean) ?? [],
+            teams: match.teams?.map(t => getTeamData(t)) ?? [],
             placeholders: match.placeholders ?? [],
           }
         }).sort((a, b) => {
