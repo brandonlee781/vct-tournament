@@ -1,6 +1,6 @@
 import teamData from '@/team-data'
 import { supabase } from '@/api'
-import type { Placeholder, Team, TeamId, Tournament } from '@/types'
+import type { Placeholder, Team, Tournament, DbTeam } from '@/types'
 import { useQuery } from '@tanstack/vue-query'
 
 type DbTournamentDay = {
@@ -15,13 +15,14 @@ type DbTournamentDay = {
     id: string;
     time: string;
     subtitle?: string
-    teams?: { id: TeamId }[]
+    teams?: DbTeam[]
     placeholders?: Placeholder[]
   }[]
 }
 
-const getTeamData = ({id }: { id: TeamId }): Team => ({
+const getTeamData = ({ id, score }: DbTeam): Team => ({
   id,
+  score,
   ...teamData[id],
 })
 

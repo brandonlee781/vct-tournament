@@ -27,8 +27,8 @@ export type TeamData = {
   color: { primary: string; secondary?: string; background?: string }
   icon?: { height?: string; width?: string }
 }
-
-export type Team = TeamData & { id: TeamId }
+export type DbTeam = { id: TeamId; score?: number }
+export type Team = TeamData & DbTeam
 
 export type Placeholder = {
   loser?: boolean
