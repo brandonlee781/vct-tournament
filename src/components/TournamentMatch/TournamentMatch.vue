@@ -44,23 +44,11 @@ const scores = computed(() => {
   <div class="flex flex-col items-center w-60 h-[104px] bg-[#161616] relative">
     <span class="font-bold text-white">{{ matchTime }}</span>
     <div class="grid grid-cols-[1fr,16px,1fr] gap-4 items-center justify-items-center pt-1 pb-2">
-      <TeamIcon v-if="leftSide?.team" :team-id="leftSide?.team.id" v-bind="leftSide.team" class="mb-1"></TeamIcon>
-      <div v-else-if="leftSide?.placeholder && winnerLoser" class="flex flex-col text-center">
-        <span v-if="leftSide.placeholder?.winner" class="text-xs font-bold text-white">WINNER OF</span>
-        <span v-else-if="leftSide.placeholder?.loser" class="text-xs font-bold text-white">LOSER OF</span>
-  
-        <span class="col-start-1 row-start-2 text-3xl font-bold text-white">{{ leftSide.placeholder?.text }}</span>
-      </div>
+      <TournamentMatchSide v-bind="leftSide" :winner-loser="winnerLoser" />
 
-      <span class="font-bold text-white">VS</span>
+      <span v-if="leftSide && rightSide" class="font-bold text-white">VS</span>
 
-      <TeamIcon v-if="rightSide?.team" :team-id="rightSide?.team.id" v-bind="rightSide.team" class="mb-1"></TeamIcon>
-      <div v-else-if="rightSide?.placeholder && winnerLoser" class="flex flex-col text-center">
-        <span v-if="rightSide.placeholder?.winner" class="text-xs font-bold text-white">WINNER OF</span>
-        <span v-else-if="rightSide.placeholder?.loser" class="text-xs font-bold text-white">LOSER OF</span>
-  
-        <span class="col-start-1 row-start-2 text-3xl font-bold text-white">{{ rightSide.placeholder?.text }}</span>
-      </div>
+      <TournamentMatchSide v-bind="rightSide" :winner-loser="winnerLoser" />
     </div>
 
     <div v-if="placeholders?.length && !winnerLoser" class="flex flex-col items-center pb-2">
@@ -71,9 +59,9 @@ const scores = computed(() => {
     </div>
     
     <div v-if="scores" class="scores text-white text-sm absolute bottom-5 flex items-center">
-      <span class="leading-1" :class="[scores.left.win ? 'text-green-700' : 'text-red-500']">{{ scores.left.num }}</span>
-      <span class="leading-1"> - </span>
-      <span class="leading-1" :class="[scores.right.win ? 'text-green-700' : 'text-red-500']">{{ scores.right.num }}</span>
+      <span class="font-semibold" :class="[scores.left.win ? 'text-green-700' : 'text-red-500']">{{ scores.left.num }}</span>
+      <span class="font-semibold"> - </span>
+      <span class="font-semibold" :class="[scores.right.win ? 'text-green-700' : 'text-red-500']">{{ scores.right.num }}</span>
     </div>
     <div class="w-full h-4 leading-4 uppercase text-center text-black font-bold bg-[#c5b173]">
       {{ subtitle }}
