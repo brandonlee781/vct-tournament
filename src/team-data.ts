@@ -123,8 +123,8 @@ const teams: { [key in TeamId]: TeamData } = {
     league: 'Americas',
     region: 'NA',
     color: {
-      primary: '#dddddd',
-      background: '#333'
+      primary: '#1c1c1c',
+      background: '#ddd'
     },
     icon: {
       height: '48px',
