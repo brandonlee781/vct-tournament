@@ -30,10 +30,15 @@ const rightSide = computed(() => {
 })
 
 const scores = computed(() => {
-  if (props.teams && props.teams.filter(Boolean).length === 2 && props.teams[0].score !== undefined && props.teams[1].score !== undefined) {
+  if (
+    props.teams &&
+    props.teams.filter(Boolean).length === 2 &&
+    props.teams[0]?.score !== undefined &&
+    props.teams[1]?.score !== undefined
+  ) {
     return {
-      left: { num: props.teams[0].score, win: props.teams[0].score > props.teams[1].score },
-      right: { num: props.teams[1].score, win: props.teams[1].score > props.teams[0].score },
+      left: { num: props.teams[0]?.score, win: props.teams[0]?.score > props.teams[1]?.score },
+      right: { num: props.teams[1]?.score, win: props.teams[1]?.score > props.teams[0]?.score },
     }
   }
   return null
