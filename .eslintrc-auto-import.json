@@ -277,6 +277,7 @@
     "watchTriggerable": true,
     "watchWithFilter": true,
     "whenever": true,
-    "useTournamentData": true
+    "useTournamentData": true,
+    "useEliminatedTeams": true
   }
 }

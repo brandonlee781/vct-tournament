@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { TeamId, TeamData } from '@/types'
+import type { TeamId } from '@/types'
 import { useTeamsStore } from '@/stores/teams'
 import teams from '@/team-data'
 type TeamGroupsTeamProp = {
   team: TeamId
+  eliminated?: boolean
 }
 const props = defineProps<TeamGroupsTeamProp>()
 const teamData = computed(() => teams[props.team])
@@ -33,12 +34,15 @@ const onClick = () => {
 <template>
   <div
     class="bg-[#161616]/60 h-32 flex flex-col items-center justify-center border-b-4 border-[#c5b173]"
+    :class="[eliminated && 'opacity-70']"
     @mouseenter="onHover(true)"
     @mouseleave="onHover(false)"
     @click="onClick"
   >
     <TeamIcon :team-id="team" v-bind="teamData" height="72px"></TeamIcon>
-    <span class="text-xs tracking-wide font-bold text-white uppercase text-center">{{ teamData.name }}</span>
+    <span class="text-xs tracking-wide font-bold text-white uppercase text-center" :class="[eliminated && 'line-through']">
+      {{ teamData.name }}
+    </span>
   </div>
 </template>
 

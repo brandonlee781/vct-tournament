@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import type { TeamId } from '@/types';
+import { useEliminatedTeams } from '@/composables/useEliminatedTeams';
+
+const { teams: eliminatedTeams } = useEliminatedTeams()
 
 type TeamGroupProps = {
   teams: TeamId[]
@@ -44,6 +47,7 @@ const teamStyle = computed(() => {
           :team="team"
           :class="teamClass"
           :style="teamStyle"
+          :eliminated="eliminatedTeams?.includes(team)"
         />
     </div>
   </div>

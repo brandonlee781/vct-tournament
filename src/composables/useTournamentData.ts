@@ -20,11 +20,14 @@ type DbTournamentDay = {
   }[]
 }
 
-const getTeamData = ({ id, score }: DbTeam): Team => ({
-  id,
-  score,
-  ...teamData[id],
-})
+const getTeamData = (pTeam: DbTeam): Team | null => {
+  if (!pTeam?.id) return null
+  return {
+    ...pTeam,
+    ...teamData[pTeam.id],
+  }
+}
+
 
 async function getTournamentData(stage: Ref<'groups' | 'brackets'>): Promise<Tournament> {
   const { data, error } = await supabase
@@ -69,7 +72,7 @@ async function getTournamentData(stage: Ref<'groups' | 'brackets'>): Promise<Tou
             id: match.id,
             subtitle: match.subtitle ?? '',
             time: new Date(match.time),
-            teams: match.teams?.map(t => getTeamData(t)) ?? [],
+            teams: match.teams?.map(t => getTeamData(t)).filter(Boolean) ?? [],
             placeholders: match.placeholders ?? [],
           }
         }).sort((a, b) => {
