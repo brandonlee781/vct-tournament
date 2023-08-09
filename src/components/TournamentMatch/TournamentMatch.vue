@@ -48,7 +48,7 @@ const scores = computed(() => {
 <template>
   <div class="flex flex-col items-center w-60 h-[104px] bg-[#161616] relative">
     <span class="font-bold text-white">{{ matchTime }}</span>
-    <div class="grid grid-cols-[1fr,16px,1fr] gap-4 items-center justify-items-center pt-1 pb-2">
+    <div v-if="teams?.length && winnerLoser" class="grid grid-cols-[1fr,16px,1fr] gap-4 items-center justify-items-center pt-1 pb-2">
       <TournamentMatchSide v-bind="leftSide" :winner-loser="winnerLoser" />
 
       <span v-if="leftSide && rightSide" class="font-bold text-white">VS</span>
