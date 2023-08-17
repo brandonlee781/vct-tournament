@@ -84,7 +84,7 @@ async function getTournamentData(stage: Ref<'groups' | 'brackets'>): Promise<Tou
 }
 
 export function useTournamentData() {
-  const stage = ref<'groups' | 'brackets'>('groups')
+  const stage = ref<'groups' | 'brackets'>('brackets')
   const { data } = useQuery(['tournament', stage], () => getTournamentData(stage))
 
   return {
