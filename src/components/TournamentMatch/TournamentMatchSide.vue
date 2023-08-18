@@ -14,9 +14,10 @@ const props = defineProps<TournamentMatchSideProps>()
   <div v-else-if="placeholder && winnerLoser" class="flex flex-col text-center">
     <span v-if="placeholder?.winner" class="text-xs font-bold text-white">WINNER OF</span>
     <span v-else-if="placeholder?.loser" class="text-xs font-bold text-white">LOSER OF</span>
-
+    
     <span class="col-start-1 row-start-2 text-3xl font-bold text-white">{{ placeholder?.text }}</span>
   </div>
+  <div v-else class="text-white text-4xl font-bold">TBD</div>
 </template>
 
 <style scoped>
