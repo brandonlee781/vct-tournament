@@ -34,6 +34,7 @@ declare module 'vue' {
     TournamentDay: typeof import('./src/components/TournamentDay/TournamentDay.vue')['default']
     TournamentDayHeader: typeof import('./src/components/TournamentDay/TournamentDayHeader.vue')['default']
     TournamentMatch: typeof import('./src/components/TournamentMatch/TournamentMatch.vue')['default']
+    TournamentMatchScore: typeof import('./src/components/TournamentMatch/TournamentMatchScore.vue')['default']
     TournamentMatchSide: typeof import('./src/components/TournamentMatch/TournamentMatchSide.vue')['default']
     TournamentMatchSpecia: typeof import('./src/components/TournamentMatch/TournamentMatchSpecia.vue')['default']
     TournamentMatchSpecial: typeof import('./src/components/TournamentMatch/TournamentMatchSpecial.vue')['default']

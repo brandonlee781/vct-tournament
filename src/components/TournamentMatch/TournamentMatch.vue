@@ -37,8 +37,8 @@ const scores = computed(() => {
     props.teams[1]?.score !== undefined
   ) {
     return {
-      left: { num: props.teams[0]?.score, win: props.teams[0]?.score > props.teams[1]?.score },
-      right: { num: props.teams[1]?.score, win: props.teams[1]?.score > props.teams[0]?.score },
+      left: props.teams[0]?.score,
+      right: props.teams[1]?.score,
     }
   }
   return null
@@ -63,11 +63,11 @@ const scores = computed(() => {
       </template>
     </div>
     
-    <div v-if="scores" class="scores text-white text-sm absolute bottom-5 flex items-center">
-      <span class="font-semibold" :class="[scores.left.win ? 'text-green-700' : 'text-red-500']">{{ scores.left.num }}</span>
-      <span class="font-semibold"> - </span>
-      <span class="font-semibold" :class="[scores.right.win ? 'text-green-700' : 'text-red-500']">{{ scores.right.num }}</span>
-    </div>
+    <TournamentMatchScore
+      v-if="scores"
+      v-bind="scores"
+      class="absolute bottom-5"
+    />
     <div class="w-full h-4 leading-4 uppercase text-center text-black font-bold bg-[#c5b173]">
       {{ subtitle }}
     </div>
